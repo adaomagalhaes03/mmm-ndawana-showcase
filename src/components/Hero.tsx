@@ -21,7 +21,7 @@ const Hero = () => {
   };
 
   return (
-    <section className="relative h-screen flex items-center justify-center overflow-hidden">
+    <section id="hero" className="relative h-screen flex items-center justify-center overflow-hidden pt-16">
       {/* Parallax Background */}
       <div
         className="absolute inset-0 z-0"
