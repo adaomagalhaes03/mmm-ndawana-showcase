@@ -25,9 +25,9 @@ const Navbar = () => {
   const navItems = [
     { label: "Início", id: "hero" },
     { label: "Quem Somos", id: "about" },
-    { label: "Galeria", id: "gallery" },
+    { label: "Serviços", id: "services" },
     { label: "Clientes", id: "clients" },
-    { label: "Contactos", id: "contact" },
+    { label: "Contato", id: "contact" },
   ];
 
   return (
@@ -37,13 +37,15 @@ const Navbar = () => {
       }`}
     >
       <div className="container mx-auto px-4">
+
         <div className="flex items-center justify-between h-16">
-          <div className="text-xl font-bold text-primary cursor-pointer" onClick={() => scrollToSection("hero")}>
+          {/* Logo/Brand */}
+          <div className="text-xl font-bold text-primary cursor-pointer md:flex-1" onClick={() => scrollToSection("hero")}>
             M.M.M. Ndawana
           </div>
 
-          {/* Desktop Menu */}
-          <div className="hidden md:flex items-center space-x-8">
+          {/* Desktop Menu - Centered */}
+          <div className="hidden md:flex items-center justify-center space-x-8 flex-1">
             {navItems.map((item) => (
               <button
                 key={item.id}
@@ -54,6 +56,9 @@ const Navbar = () => {
               </button>
             ))}
           </div>
+
+          {/* Spacer for symmetry */}
+          <div className="hidden md:block flex-1"></div>
 
           {/* Mobile Menu Button */}
           <Button
