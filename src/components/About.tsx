@@ -1,5 +1,5 @@
 import { Building2, MapPin } from "lucide-react";
-import aboutImage from "@/assets/about-image.jpg";
+import aboutImage from "@/assets/services1.png";
 
 const About = () => {
   return (

@@ -1,17 +1,13 @@
+import React from "react";
+import ggpenLogo from "../assets/ggpen.jpeg";
+import refriLogo from "../assets/refri.png";
+import sonangolLogo from "../assets/Sonangol_Logo.svg";
+
 const Clients = () => {
   const clients = [
-    { name: "CGPN", logo: "https://via.placeholder.com/150x80/FFFFFF/DC2626?text=CGPN" },
-    { name: "MININT", logo: "https://via.placeholder.com/150x80/FFFFFF/DC2626?text=MININT" },
-    { name: "GPL", logo: "https://via.placeholder.com/150x80/FFFFFF/DC2626?text=GPL" },
-    { name: "Administrações", logo: "https://via.placeholder.com/150x80/FFFFFF/DC2626?text=Administracoes" },
-    { name: "Refriango", logo: "https://via.placeholder.com/150x80/FFFFFF/DC2626?text=Refriango" },
-    { name: "Super Helô", logo: "https://via.placeholder.com/150x80/FFFFFF/DC2626?text=Super+Helo" },
-    { name: "Contarte", logo: "https://via.placeholder.com/150x80/FFFFFF/DC2626?text=Contarte" },
-    { name: "Sonangol", logo: "https://via.placeholder.com/150x80/FFFFFF/DC2626?text=Sonangol" },
-    { name: "Pitului", logo: "https://via.placeholder.com/150x80/FFFFFF/DC2626?text=Pitului" },
-    { name: "Direção de Saúde do Kilamba Kiaxi", logo: "https://via.placeholder.com/150x80/FFFFFF/DC2626?text=Direcao+Saude" },
-    { name: "Dispensário de Luanda", logo: "https://via.placeholder.com/150x80/FFFFFF/DC2626?text=Dispensario" },
-    { name: "CGD", logo: "https://via.placeholder.com/150x80/FFFFFF/DC2626?text=CGD" },
+    { name: "CGPN", logo: ggpenLogo },
+    { name: "Refriango", logo: refriLogo },
+    { name: "Sonangol", logo: sonangolLogo },
   ];
 
   return (

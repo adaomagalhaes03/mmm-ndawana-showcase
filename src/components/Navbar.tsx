@@ -1,6 +1,7 @@
 import { useState, useEffect } from "react";
 import { Menu, X } from "lucide-react";
 import { Button } from "@/components/ui/button";
+import logo from "../assets/logi1.png"; // <-- importa tua imagem local aqui
 
 const Navbar = () => {
   const [isOpen, setIsOpen] = useState(false);
@@ -37,11 +38,17 @@ const Navbar = () => {
       }`}
     >
       <div className="container mx-auto px-4">
-
         <div className="flex items-center justify-between h-16">
           {/* Logo/Brand */}
-          <div className="text-xl font-bold text-primary cursor-pointer md:flex-1" onClick={() => scrollToSection("hero")}>
-            M.M.M. Ndawana
+          <div
+            className="cursor-pointer md:flex-1 flex items-center"
+            onClick={() => scrollToSection("hero")}
+          >
+            <img
+              src={logo}
+              alt="Logo MMM Ndawana"
+              className="h-10 w-auto object-contain"
+            />
           </div>
 
           {/* Desktop Menu - Centered */}
