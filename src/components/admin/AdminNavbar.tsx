@@ -1,4 +1,4 @@
-import { Moon, Sun, User, Settings, LogOut } from "lucide-react";
+import { Moon, Sun, User, Settings, LogOut, Menu, X } from "lucide-react";
 import { useNavigate } from "react-router-dom";
 import { useTheme } from "@/contexts/ThemeContext";
 import { useAuth } from "@/contexts/AuthContext";
@@ -13,7 +13,12 @@ import {
 } from "@/components/ui/dropdown-menu";
 import logo from "../../assets/logi1.png";
 
-const AdminNavbar = () => {
+interface AdminNavbarProps {
+  isSidebarOpen: boolean;
+  onToggleSidebar: () => void;
+}
+
+const AdminNavbar = ({ isSidebarOpen, onToggleSidebar }: AdminNavbarProps) => {
   const { theme, toggleTheme } = useTheme();
   const { user, logout } = useAuth();
   const navigate = useNavigate();
@@ -26,7 +31,15 @@ const AdminNavbar = () => {
   return (
     <nav className="fixed top-0 left-0 right-0 z-50 bg-background border-b border-border">
       <div className="flex items-center justify-between h-16 px-4">
-        <div className="flex items-center">
+        <div className="flex items-center gap-4">
+          <Button
+            variant="ghost"
+            size="icon"
+            onClick={onToggleSidebar}
+            className="hover:bg-muted"
+          >
+            {isSidebarOpen ? <X className="h-6 w-6" /> : <Menu className="h-6 w-6" />}
+          </Button>
           <img src={logo} alt="Logo MMM Ndawana" className="h-10 w-auto object-contain" />
         </div>
 

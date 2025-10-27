@@ -6,12 +6,14 @@ import { Pencil } from "lucide-react";
 import { Dialog, DialogContent, DialogHeader, DialogTitle, DialogFooter } from "@/components/ui/dialog";
 import { Label } from "@/components/ui/label";
 import { Textarea } from "@/components/ui/textarea";
+import { Input } from "@/components/ui/input";
 import { useToast } from "@/hooks/use-toast";
 
 interface ContentSection {
   id: string;
   section: string;
   content: string;
+  image?: string;
   lastUpdated: string;
 }
 
@@ -21,29 +23,46 @@ const SettingsContent = () => {
       id: "1",
       section: "Quem Somos",
       content: "Somos uma empresa dedicada à prestação de serviços de qualidade...",
+      image: "",
       lastUpdated: "2024-03-15",
     },
     {
       id: "2",
-      section: "Serviços - Introdução",
+      section: "Serviços",
       content: "Oferecemos uma ampla gama de serviços profissionais...",
+      image: "",
       lastUpdated: "2024-03-10",
     },
     {
       id: "3",
       section: "Clientes",
       content: "Trabalhamos com os melhores clientes do mercado...",
+      image: "",
       lastUpdated: "2024-03-05",
+    },
+    {
+      id: "4",
+      section: "Contato",
+      content: "Endereço: Luanda, Angola\nTelefone: +244 123 456 789\nEmail: info@mmmndawana.com",
+      lastUpdated: "2024-03-15",
+    },
+    {
+      id: "5",
+      section: "Redes Sociais",
+      content: "Facebook: https://facebook.com/mmmndawana\nInstagram: https://instagram.com/mmmndawana\nLinkedIn: https://linkedin.com/company/mmmndawana",
+      lastUpdated: "2024-03-15",
     },
   ]);
   const [modalOpen, setModalOpen] = useState(false);
   const [selectedSection, setSelectedSection] = useState<ContentSection | null>(null);
   const [editContent, setEditContent] = useState("");
+  const [editImage, setEditImage] = useState("");
   const { toast } = useToast();
 
   const handleEdit = (section: ContentSection) => {
     setSelectedSection(section);
     setEditContent(section.content);
+    setEditImage(section.image || "");
     setModalOpen(true);
   };
 
@@ -52,7 +71,7 @@ const SettingsContent = () => {
       setSections(
         sections.map((s) =>
           s.id === selectedSection.id
-            ? { ...s, content: editContent, lastUpdated: new Date().toISOString() }
+            ? { ...s, content: editContent, image: editImage, lastUpdated: new Date().toISOString() }
             : s
         )
       );
@@ -108,8 +127,34 @@ const SettingsContent = () => {
                 value={editContent}
                 onChange={(e) => setEditContent(e.target.value)}
                 rows={8}
+                placeholder="Digite o conteúdo da seção..."
               />
             </div>
+            
+            {selectedSection?.section !== "Contato" && selectedSection?.section !== "Redes Sociais" && (
+              <div className="space-y-2">
+                <Label htmlFor="image">URL da Imagem</Label>
+                <Input
+                  id="image"
+                  type="url"
+                  value={editImage}
+                  onChange={(e) => setEditImage(e.target.value)}
+                  placeholder="https://exemplo.com/imagem.jpg"
+                />
+                {editImage && (
+                  <div className="mt-2">
+                    <img 
+                      src={editImage} 
+                      alt="Preview" 
+                      className="max-w-full h-32 object-cover rounded-md border"
+                      onError={(e) => {
+                        (e.target as HTMLImageElement).style.display = 'none';
+                      }}
+                    />
+                  </div>
+                )}
+              </div>
+            )}
           </div>
           <DialogFooter>
             <Button type="button" variant="outline" onClick={() => setModalOpen(false)}>
