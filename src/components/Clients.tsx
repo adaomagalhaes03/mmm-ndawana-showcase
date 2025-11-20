@@ -3,16 +3,23 @@ import ggpenLogo from "../assets/ggpen.jpeg";
 import refriLogo from "../assets/refri.png";
 import sonangolLogo from "../assets/Sonangol_Logo.svg";
 
+// ➕ IMPORTA AS NOVAS IMAGENS
+import gplLogo from "../assets/govLuanda.png"; 
+import minticsLogo from "../assets/mintic.png";    
+
 const Clients = () => {
   const clients = [
     { name: "CGPN", logo: ggpenLogo },
     { name: "Refriango", logo: refriLogo },
     { name: "Sonangol", logo: sonangolLogo },
+    { name: "Governo Provincial de Luanda", logo: gplLogo },   // ➕ ADICIONADO
+    { name: "MINTICS", logo: minticsLogo },                   // ➕ ADICIONADO
   ];
 
   return (
     <section id="clients" className="py-20 bg-background">
       <div className="container mx-auto px-4">
+
         <div className="text-center mb-12 animate-fade-in-up">
           <h2 className="text-4xl font-bold text-foreground mb-4">
             Nossos Clientes
@@ -43,12 +50,8 @@ const Clients = () => {
 
       <style>{`
         @keyframes scroll {
-          0% {
-            transform: translateX(0);
-          }
-          100% {
-            transform: translateX(-50%);
-          }
+          0% { transform: translateX(0); }
+          100% { transform: translateX(-50%); }
         }
         .animate-scroll {
           animation: scroll 40s linear infinite;
