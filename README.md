@@ -1,73 +1,161 @@
-# Welcome to your Lovable project
+# M.M.M. Ndawana Showcase - CMS & RBAC System
 
-## Project info
+A modern institutional website with a powerful admin dashboard featuring content management and role-based access control.
 
-**URL**: https://lovable.dev/projects/21903f05-60d5-4c0e-b10a-6d5f0869c16c
+## 🚀 Quick Start
 
-## How can I edit this code?
+### Prerequisites
+- Node.js 18+ installed
+- npm or bun package manager
 
-There are several ways of editing your application.
+### Installation
 
-**Use Lovable**
-
-Simply visit the [Lovable Project](https://lovable.dev/projects/21903f05-60d5-4c0e-b10a-6d5f0869c16c) and start prompting.
-
-Changes made via Lovable will be committed automatically to this repo.
-
-**Use your preferred IDE**
-
-If you want to work locally using your own IDE, you can clone this repo and push changes. Pushed changes will also be reflected in Lovable.
-
-The only requirement is having Node.js & npm installed - [install with nvm](https://github.com/nvm-sh/nvm#installing-and-updating)
-
-Follow these steps:
-
-```sh
-# Step 1: Clone the repository using the project's Git URL.
-git clone <YOUR_GIT_URL>
-
-# Step 2: Navigate to the project directory.
-cd <YOUR_PROJECT_NAME>
-
-# Step 3: Install the necessary dependencies.
-npm i
-
-# Step 4: Start the development server with auto-reloading and an instant preview.
-npm run dev
+1. **Install dependencies**:
+```bash
+npm install
 ```
 
-**Edit a file directly in GitHub**
+2. **Set up the database**:
+```bash
+# Run migrations
+npm run db:migrate
 
-- Navigate to the desired file(s).
-- Click the "Edit" button (pencil icon) at the top right of the file view.
-- Make your changes and commit the changes.
+# Seed initial data
+npm run db:seed
+```
 
-**Use GitHub Codespaces**
+3. **Start the development servers**:
 
-- Navigate to the main page of your repository.
-- Click on the "Code" button (green button) near the top right.
-- Select the "Codespaces" tab.
-- Click on "New codespace" to launch a new Codespace environment.
-- Edit files directly within the Codespace and commit and push your changes once you're done.
+Open two terminal windows:
 
-## What technologies are used for this project?
+**Terminal 1 - Backend Server**:
+```bash
+npm run server:dev
+```
+Server runs on: http://localhost:3001
 
-This project is built with:
+**Terminal 2 - Frontend**:
+```bash
+npm run dev
+```
+Frontend runs on: http://localhost:5173
 
-- Vite
-- TypeScript
-- React
-- shadcn-ui
-- Tailwind CSS
+## 🔐 Test Credentials
 
-## How can I deploy this project?
+After seeding the database, you can log in with:
 
-Simply open [Lovable](https://lovable.dev/projects/21903f05-60d5-4c0e-b10a-6d5f0869c16c) and click on Share -> Publish.
+- **Admin Account**:
+  - Email: `admin@mmm-ndawana.ao`
+  - Password: `admin123`
+  - Full access to all features
 
-## Can I connect a custom domain to my Lovable project?
+- **Editor Account**:
+  - Email: `editor@mmm-ndawana.ao`
+  - Password: `editor123`
+  - Limited to content management
 
-Yes, you can!
+## 📋 Features
 
-To connect a domain, navigate to Project > Settings > Domains and click Connect Domain.
+### ✅ Implemented
+- JWT-based authentication
+- Role-Based Access Control (RBAC)
+- User management (Admin only)
+- Contact form with message inbox
+- Dynamic content management
+- SQLite database with Prisma ORM
+- RESTful API with Express
+- Protected routes
+- Password hashing (bcryptjs)
 
-Read more here: [Setting up a custom domain](https://docs.lovable.dev/features/custom-domain#custom-domain)
+### 🚧 To Be Completed
+- Dashboard content management UI
+- Messages inbox UI
+- Permissions management UI
+- Dynamic content loading on landing page
+- Contact form integration
+
+## 🛠️ Available Scripts
+
+### Development
+- `npm run dev` - Start frontend development server
+- `npm run server:dev` - Start backend API server
+- `npm run build` - Build for production
+
+### Database
+- `npm run db:migrate` - Run database migrations
+- `npm run db:seed` - Seed database with initial data
+- `npm run db:studio` - Open Prisma Studio (database GUI)
+
+## 📚 API Endpoints
+
+### Authentication (`/api/auth`)
+- `POST /register` - Register new user
+- `POST /login` - Login user
+
+### Users (`/api/users`)
+- `GET /` - Get all users (Admin)
+- `GET /me` - Get current user
+- `PATCH /:id/role` - Update user role (Admin)
+- `DELETE /:id` - Delete user (Admin)
+- `PATCH /me` - Update profile
+
+### Content (`/api/content`)
+- `GET /` - Get all content
+- `GET /section/:section` - Get by section
+- `PUT /` - Update content
+- `PUT /batch` - Batch update
+- `DELETE /:key` - Delete content
+
+### Contact (`/api/contact`)
+- `POST /` - Submit message
+- `GET /` - Get all messages
+- `GET /unread/count` - Get unread count
+- `PATCH /:id/read` - Mark as read
+- `DELETE /:id` - Delete message
+
+## 📁 Project Structure
+
+```
+mmm-ndawana-showcase/
+├── prisma/                 # Database schema and migrations
+│   ├── schema.prisma
+│   ├── seed.ts
+│   └── dev.db
+├── server/                 # Backend API
+│   ├── index.ts           # Express app
+│   ├── db.ts              # Prisma client
+│   ├── types.ts           # TypeScript types
+│   ├── middleware/
+│   │   └── auth.ts        # JWT & RBAC middleware
+│   └── routes/
+│       ├── auth.ts
+│       ├── users.ts
+│       ├── content.ts
+│       └── contact.ts
+└── src/                    # Frontend React app
+    ├── components/        # UI components
+    ├── contexts/          # React contexts
+    ├── lib/
+    │   └── api.ts        # API service layer
+    └── pages/            # Application pages
+```
+
+## 🔒 Security
+
+- Passwords are hashed using bcryptjs
+- JWT tokens with 7-day expiration
+- Protected API routes
+- Role-based authorization
+- Environment variables for secrets
+
+## 📖 Documentation
+
+See [IMPLEMENTATION_GUIDE.md](./IMPLEMENTATION_GUIDE.md) for detailed implementation information and next steps.
+
+## 🤝 Contributing
+
+This is a private project for M.M.M. Ndawana, LDA.
+
+## 📄 License
+
+Private and Proprietary

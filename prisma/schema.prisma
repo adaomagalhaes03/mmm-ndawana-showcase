@@ -1,0 +1,47 @@
+// This is your Prisma schema file,
+// learn more about it in the docs: https://pris.ly/d/prisma-schema
+
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "sqlite"
+  url      = env("DATABASE_URL")
+}
+
+// Enum for User Roles (RBAC)
+// SQLite doesn't support enums, so we use String with @default
+// Valid values: "ADMIN", "EDITOR"
+
+// User Model with RBAC
+model User {
+  id        String   @id @default(uuid())
+  name      String
+  email     String   @unique
+  password  String   // hashed password
+  role      String   @default("EDITOR") // "ADMIN" or "EDITOR"
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+}
+
+// Site Content Model - Key-Value structure for managing site texts
+model SiteContent {
+  id        String   @id @default(uuid())
+  key       String   @unique  // e.g., "hero_title", "about_description"
+  value     String   // The actual content
+  section   String   // e.g., "hero", "about", "services"
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+}
+
+// Contact Message Model - Store form submissions
+model ContactMessage {
+  id        String   @id @default(uuid())
+  name      String
+  email     String
+  subject   String
+  message   String
+  isRead    Boolean  @default(false)
+  createdAt DateTime @default(now())
+}

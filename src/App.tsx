@@ -15,6 +15,9 @@ import DashboardServices from "./pages/DashboardServices";
 import DashboardReports from "./pages/DashboardReports";
 import DashboardUsers from "./pages/DashboardUsers";
 import DashboardSettings from "./pages/DashboardSettings";
+import DashboardContent from "./pages/DashboardContent";
+import DashboardMessages from "./pages/DashboardMessages";
+import DashboardPermissions from "./pages/DashboardPermissions";
 import NotFound from "./pages/NotFound";
 
 const queryClient = new QueryClient();
@@ -76,6 +79,30 @@ const App = () => (
                 element={
                   <ProtectedRoute>
                     <DashboardSettings />
+                  </ProtectedRoute>
+                }
+              />
+              <Route
+                path="/dashboard/content"
+                element={
+                  <ProtectedRoute>
+                    <DashboardContent />
+                  </ProtectedRoute>
+                }
+              />
+              <Route
+                path="/dashboard/messages"
+                element={
+                  <ProtectedRoute>
+                    <DashboardMessages />
+                  </ProtectedRoute>
+                }
+              />
+              <Route
+                path="/dashboard/permissions"
+                element={
+                  <ProtectedRoute>
+                    <DashboardPermissions />
                   </ProtectedRoute>
                 }
               />
